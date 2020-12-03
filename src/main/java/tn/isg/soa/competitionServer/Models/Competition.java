@@ -1,9 +1,11 @@
 package tn.isg.soa.competitionServer.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +16,7 @@ import java.util.Set;
 //@AllArgsConstructor
 //or @Data
 @Entity
+//POJO
 public class Competition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +25,11 @@ public class Competition {
     private String name;
     @NonNull
     private String country;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    //@JsonFormat(pattern=JsonFormat.DEFAULT_LOCALE)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime startDate;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime endDate;
 
     @ManyToMany(mappedBy = "teamCompetitions")
     private Set<Team> teams=new HashSet<>();

@@ -18,15 +18,15 @@ public class CompetitionServerApplication {
 		SpringApplication.run(CompetitionServerApplication.class, args);
 	}
 
-	@Bean
-	ApplicationRunner initPlayers(playerRepository plRepos)
-	{
-		return x ->{
-			Stream.of(
-					new Player("Ronaldo", LocalDate.of(1984, Month.FEBRUARY,12),7),
-					new Player("Messi", LocalDate.of(1984, Month.FEBRUARY,12),10)
-			).forEach(plRepos::save);
-		} ;
-	}
+//	@Bean
+//	ApplicationRunner initPlayers(playerRepository plRepos)
+//	{
+//		return x ->{
+//			Stream.of(
+//					new Player("Ronaldo", LocalDate.of(1984, Month.FEBRUARY,12),7),
+//					new Player("Messi", LocalDate.of(1984, Month.FEBRUARY,12),10)
+//			).forEach(plRepos::save);
+//		} ;
+//	}
 
 }

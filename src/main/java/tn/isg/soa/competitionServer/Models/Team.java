@@ -11,6 +11,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 //@AllArgsConstructor
 //or @Data
 @Entity
@@ -19,6 +20,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NonNull
+    @EqualsAndHashCode.Include
     private String name;
     private int nbPlayers;
     private LocalDate creationDate;
