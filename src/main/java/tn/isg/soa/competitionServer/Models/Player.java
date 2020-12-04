@@ -1,6 +1,7 @@
 package tn.isg.soa.competitionServer.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,7 +20,8 @@ public class Player {
     private Long id;
     @NonNull
     private String name;
-    //@NonNull
+    @NonNull
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate birthDay;
     @NonNull
     private int tshirtNumber;

@@ -1,5 +1,6 @@
 package tn.isg.soa.competitionServer.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,11 +19,12 @@ import java.util.Set;
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
     @NonNull
-    @EqualsAndHashCode.Include
     private String name;
     private int nbPlayers;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate creationDate;
     @OneToMany(mappedBy="playerTeam",cascade=CascadeType.ALL)
     private Set<Player> teamPlayers=new HashSet<>();
