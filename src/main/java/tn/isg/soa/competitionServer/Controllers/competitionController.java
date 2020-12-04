@@ -31,9 +31,9 @@ public class competitionController {
     }
 
     @PostMapping("/newcompetition")
-    public ResponseEntity<Competition> addNewCompetition(@Valid @RequestBody Competition c1)
+    public ResponseEntity<?> addNewCompetition(@Valid @RequestBody Competition c1)
     {
-
+        log.info("Request for adding new Competition",c1);
         return cmpService.addCompetition(c1);
     }
     @PutMapping("/competition/{id}")

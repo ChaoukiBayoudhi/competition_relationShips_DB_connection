@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface competitionRepository extends JpaRepository<Competition,Long> {
-//    @Query(value = "select c From Competition c where c.name= ?1 and c.startDate= ?2" ) //JPQL or HQL     //      ,nativeQuery = true)
+//    @Query("select c From Competition c where c.name= ?1 and c.startDate= ?2" ) //JPQL or HQL     //      ,nativeQuery = true)
 //    List<Competition> findByNameAndDate(String name, LocalDate startDate);
 
 

@@ -13,6 +13,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 //@AllArgsConstructor
 //or @Data
 @Entity
@@ -20,6 +21,7 @@ import java.util.Set;
 public class Competition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
     @NonNull
     private String name;

@@ -17,7 +17,10 @@ public class teamController {
     @Autowired
     private teamService teamServ;
     private final Logger log= LoggerFactory.getLogger(Team.class);
+
     @GetMapping("/all")
+    //or
+    //@RequestMapping(value ="/all",method=RequestMethod.GET)
     public ResponseEntity<List<Team>> getAllTeams()
     {
         return teamServ.getAllTeams();
