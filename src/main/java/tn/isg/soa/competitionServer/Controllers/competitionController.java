@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins="http://localhost:4200")
 @RequestMapping("/competitions")
 public class competitionController {
     @Autowired

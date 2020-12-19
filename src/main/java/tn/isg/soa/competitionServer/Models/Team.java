@@ -1,6 +1,10 @@
 package tn.isg.soa.competitionServer.Models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,7 +28,9 @@ public class Team {
     @NonNull
     private String name;
     private int nbPlayers;
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDate creationDate;
     @OneToMany(mappedBy="playerTeam",cascade=CascadeType.ALL)
     private Set<Player> teamPlayers=new HashSet<>();

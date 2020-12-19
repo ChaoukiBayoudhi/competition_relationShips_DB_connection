@@ -35,7 +35,7 @@ public class competitionService {
 
     private List<Competition> findByNameAndDate(String name, LocalDate startDate) {
         return cmpRepos.findAll().stream()
-                .filter(x->x.getName().toLowerCase().equals(name.toLowerCase())&&x.getStartDate().toLocalDate().isEqual(startDate))
+                .filter(x->x.getName().equalsIgnoreCase(name)&&x.getStartDate().toLocalDate().isEqual(startDate))
                 .collect(Collectors.toList());
     }
 
