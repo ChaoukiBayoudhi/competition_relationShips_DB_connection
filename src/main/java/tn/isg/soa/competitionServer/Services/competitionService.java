@@ -6,11 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import tn.isg.soa.competitionServer.Models.Competition;
+import tn.isg.soa.competitionServer.Models.Statistic;
 import tn.isg.soa.competitionServer.Repositories.competitionRepository;
 
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -75,6 +77,22 @@ public class competitionService {
         competition.setEndDate(competition.getEndDate());
         Competition competition1=cmpRepos.save(competition);
         return new ResponseEntity(competition,HttpStatus.ACCEPTED);
+    }
+    public ResponseEntity<List<Statistic>> getStatistic(String companyName)
+    {
+        List<Competition> lst1=cmpRepos.findAll();
+        if(lst1.isEmpty())
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        List<Competition> lst2=lst1.stream()
+        .filter(c -> c.getName().equalsIgnoreCase(companyName))
+        .collect(Collectors.toList());
+        if(lst2.isEmpty())
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        List<Statistic> lstStats=new ArrayList<Statistic>();
+        for (Competition x:lst2) {
+            lstStats.add(new Statistic(x.getStartDate().getYear(),x.getTotalGoals()));
+        }
+        return new ResponseEntity(lstStats,HttpStatus.OK);
     }
 
 }
